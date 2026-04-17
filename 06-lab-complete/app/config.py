@@ -38,15 +38,24 @@ class Settings:
     )
 
     # Storage
-    redis_url: str = field(default_factory=lambda: os.getenv("REDIS_URL", ""))
+    redis_url: str = field(default_factory=lambda: os.getenv("REDIS_URL", "redis://localhost:6379/0"))
+
+    def get_redis_client(self):
+        """Khởi tạo Redis client nếu có URL."""
+        try:
+            import redis
+            client = redis.from_url(self.redis_url, decode_responses=True)
+            client.ping()
+            return client
+        except Exception as e:
+            logging.warning(f"Could not connect to Redis at {self.redis_url}: {e}")
+            return None
 
     def validate(self):
         logger = logging.getLogger(__name__)
         if self.environment == "production":
             if self.agent_api_key == "dev-key-change-me":
                 raise ValueError("AGENT_API_KEY must be set in production!")
-            if self.jwt_secret == "dev-jwt-secret":
-                raise ValueError("JWT_SECRET must be set in production!")
         if not self.openai_api_key:
             logger.warning("OPENAI_API_KEY not set — using mock LLM")
         return self

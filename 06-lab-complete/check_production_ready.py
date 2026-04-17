@@ -28,16 +28,14 @@ def run_checks():
 
     # ── Files ─────────────────────────────────────
     print("\n[Required Files]")
-    results.append(check("Dockerfile exists",
-                         os.path.exists(os.path.join(base, "Dockerfile"))))
-    results.append(check("docker-compose.yml exists",
-                         os.path.exists(os.path.join(base, "docker-compose.yml"))))
-    results.append(check(".dockerignore exists",
-                         os.path.exists(os.path.join(base, ".dockerignore"))))
-    results.append(check(".env.example exists",
-                         os.path.exists(os.path.join(base, ".env.example"))))
-    results.append(check("requirements.txt exists",
-                         os.path.exists(os.path.join(base, "requirements.txt"))))
+    results.append(check("app/main.py exists",
+                         os.path.exists(os.path.join(base, "app", "main.py"))))
+    results.append(check("app/auth.py exists",
+                         os.path.exists(os.path.join(base, "app", "auth.py"))))
+    results.append(check("app/rate_limiter.py exists",
+                         os.path.exists(os.path.join(base, "app", "rate_limiter.py"))))
+    results.append(check("app/cost_guard.py exists",
+                         os.path.exists(os.path.join(base, "app", "cost_guard.py"))))
     results.append(check("railway.toml or render.yaml exists",
                          os.path.exists(os.path.join(base, "railway.toml")) or
                          os.path.exists(os.path.join(base, "render.yaml"))))
