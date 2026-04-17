@@ -33,7 +33,7 @@
 ## Part 3: Cloud Deployment
 
 ### Exercise 3.1: Railway deployment
-- URL: https://ai-agent-production.up.railway.app (Ví dụ)
+- URL: https://2a202600405-nguyenthingoc-day12-production.up.railway.app
 - Screenshot: [Link to screenshot in repo]
 
 ### Exercise 3.2: Comparison between railway.toml and render.yaml

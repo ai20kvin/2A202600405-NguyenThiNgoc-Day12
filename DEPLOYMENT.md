@@ -1,7 +1,7 @@
 # Deployment Information
 
 ## Public URL
-https://ai-agent-vinu.up.railway.app
+https://2a202600405-nguyenthingoc-day12-production.up.railway.app
 
 ## Platform
 Railway
