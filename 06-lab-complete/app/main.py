@@ -99,9 +99,23 @@ class AskResponse(BaseModel):
 
 # ── Endpoints ──
 
+@app.get("/", tags=["Ops"])
+def root():
+    return {
+        "status": "ok",
+        "uptime_seconds": round(time.time() - START_TIME, 1),
+        "platform": "Railway",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
 @app.get("/health", tags=["Ops"])
 def health():
-    return {"status": "ok", "uptime": round(time.time() - START_TIME, 1)}
+    return {
+        "status": "ok",
+        "uptime_seconds": round(time.time() - START_TIME, 1),
+        "platform": "Railway",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
 
 @app.get("/ready", tags=["Ops"])
 def ready():

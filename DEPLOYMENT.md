@@ -1,7 +1,7 @@
 # Deployment Information
 
 ## Public URL
-https://ai-agent-vinu.railway.app
+https://ai-agent-vinu.up.railway.app
 
 ## Platform
 Railway
