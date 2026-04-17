@@ -146,7 +146,7 @@ async def ask_agent(
 
     # 4. LLM Call
     # In production, you'd pass the full history to the model
-    answer = llm_ask(body.question)
+    answer = llm_ask(body.question, history=history)
 
     # 5. Cost Guard (Post-record)
     check_and_record_cost(_key[:8], 0, len(answer.split()))
